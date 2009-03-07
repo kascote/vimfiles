@@ -1,0 +1,3 @@
+Align.vba: call delete('/home/nelson/.vim/plugin/AlignPlugin.vim')|call delete('/home/nelson/.vim/plugin/AlignMaps.vim')|call delete('/home/nelson/.vim/plugin/cecutil.vim')|call delete('/home/nelson/.vim/doc/Align.txt')|call delete('/home/nelson/.vim/autoload/Align.vim')
+specky.vba: call delete('/home/nelson/.vim/syntax/rdoc.vim')|call delete('/home/nelson/.vim/syntax/specrun.vim')|call delete('/home/nelson/.vim/doc/specky.txt')|call delete('/home/nelson/.vim/plugin/specky.vim')
+loremipsum.vba: call delete('/home/nelson/.vim/autoload/loremipsum.vim')|call delete('/home/nelson/.vim/autoload/loremipsum.txt')|call delete('/home/nelson/.vim/plugin/loremipsum.vim')|call delete('/home/nelson/.vim/doc/loremipsum.txt')
