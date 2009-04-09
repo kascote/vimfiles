@@ -13,15 +13,15 @@ filetype plugin indent on  " Enable file type detection.
 "set grepprg=ack
 "set grepformat=%f:%l:%m
 set tags=tags;~/          " Look for the file in the current directory, then south until you reach home.
-set timeoutlen=300        " Quick timeouts on key combinations.
+set timeoutlen=500        " Quick timeouts on key combinations.
 
 "---[ Theme / Colors ]----------------------------------------------------
 set background=dark
 syntax on
 if has("gui_running")
-  color molokai "ir_black vividchalk_nel autumnleaf vibrantink tabula eclipse nelson zenburn chocolateliquor
+  color vividchalk_nel "summerfruit256 molokai ir_black vividchalk_nel autumnleaf vibrantink tabula eclipse nelson zenburn chocolateliquor
 else
-  color mustang
+  color vividchalk_nel "mustang summerfruit256 
 endif
 "set guifont=Consolas:h10
 set guifont=monaco\ 10
@@ -39,6 +39,7 @@ set wildmenu                " turn on wild menu
 set ruler                   " Always show current positions along the bottom 
 set cmdheight=2             " the command bar is 2 high
 set number                  " turn on line numbers
+set numberwidth=5
 set lz                      " do not redraw while running macros (much faster) (LazyRedraw)
 set hid                     " you can change buffer without saving
 "set backspace=2             " make backspace work normal
@@ -103,11 +104,13 @@ set scrolloff=3             " Indicate jump out of the screen when 3 lines befor
 " Enable folding, but by default make it act like folding is off, because folding is annoying in anything but a few rare cases
 set foldenable              " Turn on folding
 set foldmethod=indent       " Make folding indent sensitive
-"set foldmethod=marker   " Enable folding by fold markers
-set foldlevel=100           " Don't autofold anything (but I can still fold manually)
-set foldopen-=search        " don't open folds when you search into them
-set foldopen-=undo          " don't open folds when you undo stuff
-set foldclose=all       " Autoclose folds, when moving out of them
+"set foldmethod=marker      " Enable folding by fold markers
+set foldnestmax=10
+set foldlevel=1             " Don't autofold anything (but I can still fold manually)
+"set foldopen-=search       " don't open folds when you search into them
+"set foldopen-=undo         " don't open folds when you undo stuff
+set foldclose=all           " Autoclose folds, when moving out of them
+set nofoldenable            " don't fold by default
 
 "---[ File Explorer ]----------------------------------------------------
 let g:explVertical=1        " should I split verticially
@@ -145,6 +148,8 @@ map <F7> :set hlsearch!<CR>
 map <F8> :set list!<CR>
 "Si se esta con una session abierta, grava la sesion con los cambios que hay
 map <F9> :execute 'mksession! ' . v:this_session<CR>
+" return from a tag jump
+map <F11> :pop<CR>
 
 "----------
 nmap <silent><Home>      :cal SmartHome("n")<CR>
@@ -155,7 +160,6 @@ vmap <silent><Home> <Esc>:cal SmartHome("v")<CR>
 vmap <silent><End>  <Esc>:cal SmartEnd("v")<CR> 
 
 "-------------
-imap <M-o> <C-X><Space>
 imap <M-7> <C-X>/
 imap <M-8> <C-X>+
 imap <M-9> <C-X>-
@@ -190,13 +194,16 @@ function! s:ToggleScratch()
 endfunction
 
 map <silent> <leader>s :call <SID>ToggleScratch()<CR>
-map <leader>t :FuzzyFinderFile<CR>
+map <leader>f :FuzzyFinderFile<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>z :BufExplorer<CR>
+map <leader>t :tag<CR>
 map <c-z> <space>
 
-
+"map <Leader>m :Rmodel
+"map <Leader>r :Rcontroller
+"map <Leader>v :Rview
 
 " Autocommands
 "autocmd BufEnter * :syntax sync fromstart " ensure every file does syntax highlighting (full)
@@ -218,3 +225,5 @@ autocmd BufEnter *.pl map <F11> :w<CR>:!perl -c %<CR>
 autocmd BufEnter * set path=**
 
 runtime! ftdetect/*.vim
+
+

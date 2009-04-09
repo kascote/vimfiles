@@ -6,9 +6,9 @@
 
 " Based on the Vibrank Ink theme for TextMate
 
-if has("gui_running")
+"if has("gui_running")
     set background=dark
-endif
+"endif
 hi clear
 if exists("syntax_on")
    syntax reset
@@ -93,7 +93,7 @@ call s:hifg("Normal","#EEEEEE","White",87)
 if &background == "light" || has("gui_running")
     hi Normal guibg=Black ctermbg=Black
 else
-    hi Normal guibg=Black ctermbg=Black
+    hi Normal guibg=Black ctermbg=NONE
 endif
 
 highlight StatusLine    guifg=Black   guibg=#aabbee gui=bold ctermfg=Black ctermbg=White  cterm=bold
