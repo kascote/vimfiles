@@ -24,7 +24,7 @@ else
   color vividchalk_nel "mustang summerfruit256 
 endif
 "set guifont=Consolas:h10
-set guifont=monaco\ 10
+set guifont=monaco\ 9
 
 "---[ File / Bakcups ]----------------------------------------------------
 set backupcopy=yes      " keep a backup file
@@ -198,7 +198,7 @@ map <leader>f :FuzzyFinderFile<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>z :BufExplorer<CR>
-map <leader>t :tag<CR>
+map <leader>t <c-]><CR>
 map <c-z> <space>
 
 "map <Leader>m :Rmodel

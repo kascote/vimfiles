@@ -88,6 +88,13 @@ hi link rubyRegexpDelimiter rubyRegexp
 hi link javascriptRegexpString  Regexp
 hi link javascriptNumber        Number
 hi link javascriptNull          Constant
+hi link javascript              Normal
+hi link javascriptFunction      Function
+hi link javascriptSpecial       Special
+hi link javascriptType          Constant
+hi      javascriptMember        guifg=#ff0000
+hi      javascriptParens        guifg=#00ff00
+hi link javascriptValue         Constant
 
 call s:hifg("Normal","#EEEEEE","White",87)
 if &background == "light" || has("gui_running")
@@ -104,11 +111,11 @@ else
     highlight StatusLine ctermbg=43
 endif
 highlight WildMenu      guifg=Black   guibg=#ffff00 gui=bold ctermfg=Black ctermbg=Yellow cterm=bold
-highlight Cursor        guifg=Black guibg=White ctermfg=Black ctermbg=White
-highlight CursorLine    guibg=#333333 guifg=NONE
+highlight Cursor        guifg=White   guibg=Red ctermfg=White ctermbg=Red
+highlight CursorLine    guibg=#111111 guifg=NONE cterm=none
 highlight CursorColumn  guibg=#333333 guifg=NONE
-highlight NonText       guifg=#404040 ctermfg=8
-highlight SpecialKey    guifg=#404040 ctermfg=8
+highlight NonText       guifg=#606060 ctermfg=8
+highlight SpecialKey    guifg=#606060 ctermfg=8
 highlight Directory     none
 high link Directory     Identifier
 highlight ErrorMsg      guibg=Red ctermbg=DarkRed guifg=NONE ctermfg=NONE
