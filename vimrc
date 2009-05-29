@@ -135,6 +135,9 @@ let b:match_ignorecase = 1
 "---[ Perl ]----------------------------------------------------
 let perl_extended_vars=1      " highlight advanced perl vars inside strings
 
+"---[ VimDiff ]----------------------------------------------------
+set diffopt=filler,iwhite
+
 
 "no change tab characters for this files
 autocmd FileType make     set noexpandtab
@@ -204,6 +207,23 @@ map <c-z> <space>
 "map <Leader>m :Rmodel
 "map <Leader>r :Rcontroller
 "map <Leader>v :Rview
+
+
+" STRIP -- EMPTY LINE ENDINGS
+nmap _$ :% s_\s\+$__g <CR>
+vmap _$ : s_\s\+$__g <CR>
+" STRIP -- EMPTY LINE BEGINNINGS
+nmap _^ :% s_^\s\+__g <CR>
+vmap _^ : s_^\s\+__g <CR>
+" STRIP -- EMPTY LINES
+nmap _- :% g/^\s*$/d<CR>
+vmap _- : g/^\s*$/d<CR>
+" COMMATIZE
+vmap ,, :! paste -s -d, -<CR>
+" QUOTISIZE
+vmap ,' :! awk '{print "'\''"$0"'\''"}'<CR>
+vmap ," :! awk '{print "\""$0"\""}'<CR>
+
 
 " Autocommands
 "autocmd BufEnter * :syntax sync fromstart " ensure every file does syntax highlighting (full)
