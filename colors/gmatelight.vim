@@ -42,7 +42,7 @@ hi      javascriptMember        guifg=#ff0000
 hi      javascriptParens        guifg=#00ff00
 hi link javascriptValue         Constant
 
-highlight Normal                guifg=#1f1f1f   guibg=White                     ctermfg=15        ctermbg=White
+highlight Normal                guifg=#1f1f1f   guibg=White                     ctermfg=Black     ctermbg=White
 
 highlight StatusLine            guifg=Black     guibg=#aabbee   gui=bold        ctermfg=Black     ctermbg=White       cterm=bold
 highlight StatusLineNC          guifg=#444444   guibg=#aaaaaa   gui=none        ctermfg=Black     ctermbg=Grey        cterm=none
@@ -56,33 +56,31 @@ highlight NonText               guifg=#606060   ctermfg=8
 highlight SpecialKey            guifg=#606060   ctermfg=8
 highlight Directory             none
 high link Directory             Identifier
-highlight ErrorMsg              guibg=Red       guifg=NONE                      ctermfg=NONE      ctermbg=DarkRed 
-highlight Search                guifg=#000000   guibg=#555555                   ctermfg=0         ctermbg=250
-highlight IncSearch             guifg=White     guibg=Black                     ctermfg=White     ctermbg=Black
+highlight ErrorMsg              guifg=White     guibg=Red                       ctermfg=White     ctermbg=DarkRed 
+highlight Search                guifg=#1d1d1d   guibg=#a7a7a7                   ctermfg=0         ctermbg=250
+highlight IncSearch             guifg=#1d1d1d   guibg=#a7a7a7                   ctermfg=0         ctermbg=250
 highlight MoreMsg               guifg=#00AA00   ctermfg=Green
-highlight LineNr                guifg=#DDEEFF   guibg=#222222                   ctermfg=White     ctermbg=80
-highlight Question              none
 high link Question              MoreMsg
-highlight Title                 guifg=Magenta   ctermfg=Magenta
+highlight LineNr                guifg=#DDEEFF   guibg=#222222                   ctermfg=White     ctermbg=80
+highlight Title                 guifg=Magenta                                   ctermfg=Magenta
 highlight VisualNOS             guifg=#000000   guibg=#444444                   ctermfg=0         ctermbg=81
 highlight Visual                guifg=#000000   guibg=#555577                   ctermfg=0         ctermbg=83
 highlight WarningMsg            guifg=Red                                       ctermfg=Red
 highlight Folded                guifg=#aaddee   guibg=#1100aa                   ctermfg=0         ctermbg=DarkBlue
-highlight FoldColumn            none
 high link FoldColumn            Folded
 highlight Pmenu                 guifg=White     guibg=#000099   gui=bold        ctermfg=White     ctermbg=18          cterm=bold
 highlight PmenuSel              guifg=White     guibg=#5555ff   gui=bold        ctermfg=White     ctermbg=39          cterm=bold
-highlight PmenuSbar             guibg=Grey                                                        ctermbg=Grey
-highlight PmenuThumb            guibg=White                                                       ctermbg=White
+highlight PmenuSbar                             guibg=Grey                                        ctermbg=Grey
+highlight PmenuThumb                            guibg=White                                       ctermbg=White
 highlight TabLine               guifg=#bbbbbb   guibg=#333333   gui=underline   ctermfg=0         ctermbg=251         cterm=underline
 highlight TabLineSel            guifg=White     guibg=Black                     ctermfg=White     ctermbg=Black
 highlight TabLineFill           guifg=#bbbbbb   guibg=#808080   gui=underline   ctermfg=0         ctermbg=248         cterm=underline
 
-highlight Type                                                 gui=none
-highlight railsUserClass                                       gui=italic                                             cterm=underline
-highlight railsUserMethod                                      gui=italic                                             cterm=underline
-highlight Statement                                            gui=none
-highlight Identifier                                                                                                  cterm=none
+highlight Type                  guifg=#c5060b                   gui=bold
+highlight railsUserClass                                        gui=italic                                            cterm=underline
+highlight railsUserMethod                                       gui=italic                                            cterm=underline
+highlight Statement             guifg=#c5060b                   gui=bold
+highlight Identifier            guifg=#318495                                                                         cterm=none
 highlight Comment               guifg=#0066ff   guibg=#d6e5ff   gui=italic
 highlight Constant              guifg=#c5060b                   gui=bold
 

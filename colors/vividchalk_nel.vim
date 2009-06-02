@@ -100,7 +100,7 @@ call s:hifg("Normal","#EEEEEE","White",87)
 if &background == "light" || has("gui_running")
     hi Normal guibg=Black ctermbg=Black
 else
-    hi Normal guibg=Black ctermbg=NONE
+    hi Normal guibg=Black ctermbg=Black
 endif
 
 highlight StatusLine    guifg=Black   guibg=#aabbee gui=bold ctermfg=Black ctermbg=White  cterm=bold
