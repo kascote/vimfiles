@@ -12,7 +12,7 @@ let $S = $HOME . '/vimfiles/sessions'
 filetype plugin indent on  " Enable file type detection.
 "set grepprg=ack
 "set grepformat=%f:%l:%m
-set tags=tags;~/          " Look for the file in the current directory, then south until you reach home.
+set tags=tags;vim_tags;~/          " Look for the file in the current directory, then south until you reach home.
 set timeoutlen=500        " Quick timeouts on key combinations.
 
 "---[ Theme / Colors ]----------------------------------------------------
