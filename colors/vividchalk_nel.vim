@@ -7,7 +7,7 @@
 " Based on the Vibrank Ink theme for TextMate
 
 "if has("gui_running")
-    set background=dark
+set background=dark
 "endif
 hi clear
 if exists("syntax_on")

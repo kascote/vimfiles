@@ -1,9 +1,12 @@
 " description:	color scheme based on google's
 "      author:	kamil.stachowski@gmail.com
 "     license:	gpl 3+
-"     version:	0.1 (2008.11.20)
+"     version:	0.2 (2008.11.27)
 
 " changelog:
+"         0.2:	2008.11.27
+"         		changed MatchParen to link to Type (thanks to Jarosław Mężyk)
+"         		added Diff*
 "         0.1:	2008.11.20
 "       		initial version
 
@@ -25,16 +28,20 @@ let colors_name = "google"
 " green dark	006633
 " green light	46aa64
 " grey			aaaaaa
+" red			d96666
 " white			ffffff
 " yellow		ffffb5
 
-" diffy
 " pmenu
 
 hi Comment 		guifg=#aaaaaa	guibg=#ffffff	gui=none
 hi Constant 	guifg=#6694e3	guibg=#ffffff	gui=none
 hi Cursor 		guifg=#ffffff	guibg=#000000	gui=none
 hi CursorLine		          	guibg=#efefef	gui=none
+hi DiffAdd		guifg=#ffffff	guibg=#006633	gui=none
+hi DiffChange	guifg=#000000	guibg=#ffffb5	gui=none
+hi DiffDelete	guifg=#000000	guibg=#d96666	gui=none
+hi DiffText		guifg=#d96666	guibg=#ffffb5	gui=none
 hi Folded 		guibg=#efefef	guifg=#000000	gui=italic
 hi Identifier 	guifg=#7799bb	guibg=#ffffff	gui=none
 hi ModeMsg		guifg=#ffffff	guibg=#6694e3	gui=bold
@@ -74,7 +81,7 @@ hi! link Keyword		Identifier
 hi! link Keyword		Identifier
 hi! link Label			Statement
 hi! link LineNr			Comment
-hi! link MatchParen		Cursor
+hi! link MatchParen		Statement
 hi! link MoreMsg		Identifier
 hi! link NonText		Comment
 hi! link Number			Constant

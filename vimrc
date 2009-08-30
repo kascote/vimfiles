@@ -12,11 +12,11 @@ let $S = $HOME . '/vimfiles/sessions'
 filetype plugin indent on  " Enable file type detection.
 "set grepprg=ack
 "set grepformat=%f:%l:%m
-set tags=tags;vim_tags;~/          " Look for the file in the current directory, then south until you reach home.
+set tags=tags,vim_tags;~/          " Look for the file in the current directory, then south until you reach home.
 set timeoutlen=500        " Quick timeouts on key combinations.
 
 "---[ Theme / Colors ]----------------------------------------------------
-set background=dark
+"set background=dark
 syntax on
 if has("gui_running")
   color vividchalk_nel "summerfruit256 molokai ir_black vividchalk_nel autumnleaf vibrantink tabula eclipse nelson zenburn chocolateliquor
@@ -27,7 +27,7 @@ endif
 set guifont=monaco\ 9
 
 "---[ File / Bakcups ]----------------------------------------------------
-set backupcopy=yes      " keep a backup file
+set backupcopy=no           " keep a backup file
 set backupdir=/tmp
 set directory=/tmp
 set makeef=error.err
@@ -152,7 +152,7 @@ map <F8> :set list!<CR>
 "Si se esta con una session abierta, grava la sesion con los cambios que hay
 map <F9> :execute 'mksession! ' . v:this_session<CR>
 " return from a tag jump
-map <F11> :pop<CR>
+"map <F11> :pop<CR>
 
 "----------
 nmap <silent><Home>      :cal SmartHome("n")<CR>
@@ -204,6 +204,31 @@ map <leader>z :BufExplorer<CR>
 map <leader>t <c-]><CR>
 map <c-z> <space>
 
+" fix meta-keys which generate <Esc>a .. <Esc>z
+"let c='a'
+"while c <= 'z'
+"  exec "set <M-".toupper(c).">=\e".c
+"  exec "imap \e".c." <M-".toupper(c).">"
+"  let c = nr2char(1+char2nr(c))
+"endw
+
+" fix meta-keys which generate <Esc>0 .. <Esc>9
+"let c='0'
+"while c <= '9'
+"  exec "set <M-".toupper(c).">=\e".c
+"  exec "imap \e".c." <M-".toupper(c).">"
+"  let c = nr2char(1+char2nr(c))
+"endw
+
+map 7 <M-7>
+map! 7 <M-7>
+map 8 <M-8>
+map! 8 <M-8>
+map 9 <M-9>
+map! 9 <M-9>
+map 0 <M-0>
+map! 0 <M-0>
+
 "map <Leader>m :Rmodel
 "map <Leader>r :Rcontroller
 "map <Leader>v :Rview
@@ -240,7 +265,7 @@ iabbrev {{EPOCH}} <C-R>=strftime("%c")<CR>
 
 " Cuando se carga un buffer con ruby se puede chequear la sintaxis con F11
 autocmd BufEnter *.rb map <F11> :w<CR>:!ruby -c %<CR>
-autocmd BufEnter *.pl map <F11> :w<CR>:!perl -c %<CR>
+autocmd BufEnter *.pl map <F11> :w<CR>:!perl -wc %<CR>
 " Pone al vim bajo el directorio del archivo actual
 autocmd BufEnter * set path=**
 
