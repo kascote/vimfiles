@@ -1,30 +1,30 @@
 "---[ General ]-----------------------------------------------------------
 let $LANG = 'en'
-set autowrite           " Automatically save before commands like :next and :make
+set autowrite                       " Automatically save before commands like :next and :make
 set encoding=utf8
 setglobal fenc=utf8
-set history=50          " keep 50 lines of command line history
-set ignorecase          " Do case insensitive search matching
-set nocompatible        " Usar modo Vim
-set showcmd             " Show (partial) command in status line.
-let mapleader = ','     " remap leader
+set history=50                      " keep 50 lines of command line history
+set ignorecase                      " Do case insensitive search matching
+set nocompatible                    " Usar modo Vim
+set showcmd                         " Show (partial) command in status line.
+let mapleader = ','                 " remap leader
 let $S = $HOME . '/vimfiles/sessions'
-filetype plugin indent on  " Enable file type detection.
+filetype plugin indent on           " Enable file type detection.
 "set grepprg=ack
 "set grepformat=%f:%l:%m
-set tags=tags,vim_tags;~/          " Look for the file in the current directory, then south until you reach home.
-set timeoutlen=500        " Quick timeouts on key combinations.
+set tags=tags,vim_tags;~/           " Look for the file in the current directory, then south until you reach home.
+set timeoutlen=500                  " Quick timeouts on key combinations.
 
 "---[ Theme / Colors ]----------------------------------------------------
-"set background=dark
+set background=dark
 syntax on
 if has("gui_running")
-  color vividchalk_nel "summerfruit256 molokai ir_black vividchalk_nel autumnleaf vibrantink tabula eclipse nelson zenburn chocolateliquor
+  color peaksea "vividchalk_nel 
 else
-  color vividchalk_nel "mustang summerfruit256 
+  color peaksea "vividchalk_nel 
 endif
-"set guifont=Consolas:h10
 set guifont=monaco\ 9
+"set guifont=Consolas:h10
 
 "---[ File / Bakcups ]----------------------------------------------------
 set backupcopy=no           " keep a backup file
@@ -54,7 +54,7 @@ set wmh=0                   " lineas minimas que se ven al maximizar una ventana
 set t_Co=256                " Configura la consola a 256 colores
 set title                   " set terminal title
 "set virtualedit=all         " permite mover el cursor por todos lados en modo comando
-set cursorline              " colorea la linea actual del cursor
+"set cursorline              " colorea la linea actual del cursor
 set guioptions+=m           " menu bar
 set guioptions+=g           " grey menu disabled menu items
 set guioptions+=t           " tearoff menus
@@ -81,9 +81,9 @@ set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$ " what to show when I 
 set so=10                   " Keep 10 lines (top/bottom) for scope
 set novisualbell            " don't blink
 set noerrorbells            " no noises
+set t_vb=                   " Evita los beeps y flashear la pantalla
 set statusline=%<%F%=\ [%M%n%R%H%W]\ %{&ff}\ %y\ %-19(%3l,%02c%03V%)[%o,%O]\ 0x%02B'%03b'  "Formato de la linea de status 
 set laststatus=2            " always show the status line
-set vb t_vb=            " Evita los beeps y flashear la pantalla
 
 "---[ Text Formatting/Layout ]----------------------------------------------------
 set fo=tcrqn                " See Help (complex)
@@ -99,6 +99,7 @@ set smarttab                " use tabs at the start of a line, spaces elsewhere
 set expandtab               " tabs to spaces
 set scrolljump=3            " Jump 5 lines when running out of the screen
 set scrolloff=3             " Indicate jump out of the screen when 3 lines before end of the screen
+set pastetoggle=<F3>        "Paste toggle - when pasting something in, don't indent.
 
 "---[ Folding ]----------------------------------------------------
 " Enable folding, but by default make it act like folding is off, because folding is annoying in anything but a few rare cases
@@ -143,42 +144,32 @@ set diffopt=filler,iwhite
 autocmd FileType make     set noexpandtab
 autocmd FileType python   set noexpandtab
 
-map <F2> :!irb -f<CR>
-map <F3> :!ri 
-map <F4> :!bash
-map <F6> :set number!<CR>
-map <F7> :set hlsearch!<CR>
-map <F8> :set list!<CR>
-"Si se esta con una session abierta, grava la sesion con los cambios que hay
-map <F9> :execute 'mksession! ' . v:this_session<CR>
-" return from a tag jump
-"map <F11> :pop<CR>
+map <leader>4 :!bash
+map <leader>6 :set number!<CR>
+map <leader>7 :set hlsearch!<CR>
+map <leader>8 :set list!<CR>
+map <leader>9 :execute 'mksession! ' . v:this_session<CR>
 
 "----------
-nmap <silent><Home>      :cal SmartHome("n")<CR>
-nmap <silent><End>       :cal SmartEnd("n")<CR>
-imap <silent><Home>     <C-r>=SmartHome("i")<CR>
-imap <silent><End>      <C-r>=SmartEnd("i")<CR>
-vmap <silent><Home> <Esc>:cal SmartHome("v")<CR>
-vmap <silent><End>  <Esc>:cal SmartEnd("v")<CR> 
+nmap <silent><Home>  :cal SmartHome("n")<CR>
+nmap <silent><End>   :cal SmartEnd("n")<CR>
+imap <silent><Home>  <C-r>=SmartHome("i")<CR>
+imap <silent><End>   <C-r>=SmartEnd("i")<CR>
+vmap <silent><Home>  <Esc>:cal SmartHome("v")<CR>
+vmap <silent><End>   <Esc>:cal SmartEnd("v")<CR> 
 
 "-------------
-imap <M-7> <C-X>/
-imap <M-8> <C-X>+
-imap <M-9> <C-X>-
-imap <M-0> <C-X>=
+imap <M-6> <C-X>/
+imap <M-7> <C-X>+
+imap <M-8> <C-X>-
+imap <M-9> <C-X>=
 
 "-------------
 " mueve y maximiza entre ventanas
-"map <C-H> <C-W>h<C-W><BAR>
-"map <C-L> <C-W>l<C-W><BAR>
-"map <C-J> <C-W>j<C-W>_
-"map <C-K> <C-W>k<C-W>_
 map <c-j> <c-w>j 
 map <c-k> <c-w>k 
 map <c-l> <c-w>l 
 map <c-h> <c-w>h
-
 
 nnoremap ' `
 nnoremap ` '
@@ -202,7 +193,24 @@ map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>z :BufExplorer<CR>
 map <leader>t <c-]><CR>
+"map <Leader>m :Rmodel
+"map <Leader>r :Rcontroller
+"map <Leader>v :Rview
 map <c-z> <space>
+"Fast reloading of the .vimrc
+map <leader>s :source ~/.vimrc<cr>
+"Fast editing of .vimrc
+map <leader>e :e! ~/.vimrc<cr>
+"When .vimrc is edited, reload it
+autocmd! bufwritepost vimrc source ~/.vimrc
+"Switch to current dir
+map <leader>cd :cd %:p:h<cr>
+"Remove the Windows ^M
+noremap <Leader>rm mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+map <leader>cn :cn<cr>
+map <leader>cp :cp<cr>
+map <leader>c :botright cw 10<cr>
+
 
 " fix meta-keys which generate <Esc>a .. <Esc>z
 "let c='a'
@@ -220,18 +228,14 @@ map <c-z> <space>
 "  let c = nr2char(1+char2nr(c))
 "endw
 
+map 6 <M-6>
+map! 6 <M-6>
 map 7 <M-7>
 map! 7 <M-7>
 map 8 <M-8>
 map! 8 <M-8>
 map 9 <M-9>
 map! 9 <M-9>
-map 0 <M-0>
-map! 0 <M-0>
-
-"map <Leader>m :Rmodel
-"map <Leader>r :Rcontroller
-"map <Leader>v :Rview
 
 
 " STRIP -- EMPTY LINE ENDINGS
@@ -243,32 +247,23 @@ vmap _^ : s_^\s\+__g <CR>
 " STRIP -- EMPTY LINES
 nmap _- :% g/^\s*$/d<CR>
 vmap _- : g/^\s*$/d<CR>
-" COMMATIZE
-vmap ,, :! paste -s -d, -<CR>
-" QUOTISIZE
-vmap ,' :! awk '{print "'\''"$0"'\''"}'<CR>
-vmap ," :! awk '{print "\""$0"\""}'<CR>
 
+"Smart mappings on the command line
+cno $h e ~/
+cno $d e ~/Desktop/
+cno $j e ./
 
-" Autocommands
-"autocmd BufEnter * :syntax sync fromstart " ensure every file does syntax highlighting (full)
-"au BufNewFile,BufRead *.asp :set ft=aspjscript " all my .asp files ARE jscript
-"au BufNewFile,BufRead *.tpl :set ft=html " all my .tpl files ARE html
-"au BufNewFile,BufRead *.hta :set ft=html " all my .tpl files ARE html
 
 " Useful abbrevs
-"iab xasp <%@language=jscript%><CR><%<CR><TAB><CR><BS>%><ESC><<O<TAB>
 "iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
-iabbrev {{DATE}} <C-R>=strftime("%A, %B %e %Y @ %H:%M")<CR>
-iabbrev {{EPOCH}} <C-R>=strftime("%c")<CR>
-
-" Cuando se carga un buffer con ruby se puede chequear la sintaxis con F11
-autocmd BufEnter *.rb map <F11> :w<CR>:!ruby -c %<CR>
-autocmd BufEnter *.pl map <F11> :w<CR>:!perl -wc %<CR>
+" Cuando se carga un buffer con ruby se puede chequear la sintaxis con <leader>w
+autocmd BufEnter *.rb map <leader>rw :w<CR>:!ruby -cw %<CR>
+autocmd BufEnter *.rb map <leader>rr :w<CR>:!ruby -w %<CR>
+autocmd BufEnter *.pl map <leader>w :w<CR>:!perl -wc %<CR>
 " Pone al vim bajo el directorio del archivo actual
 autocmd BufEnter * set path=**
+autocmd BufEnter *.xml set equalprg=xmllint\ --format\ --recover\ -
 
 runtime! ftdetect/*.vim
-
 
