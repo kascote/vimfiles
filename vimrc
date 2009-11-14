@@ -19,14 +19,15 @@ set timeoutlen=500                  " Quick timeouts on key combinations.
 set background=dark
 syntax on
 if has("gui_running")
-  color peaksea "vividchalk_nel 
+  color lucius_nel "peaksea vividchalk_nel 
 else
-  color peaksea "vividchalk_nel 
+  color lucius_nel "peaksea vividchalk_nel 
 endif
 set guifont=monaco\ 9
 "set guifont=Consolas:h10
 
 "---[ File / Bakcups ]----------------------------------------------------
+set nobackup                " remove backups after close
 set backupcopy=no           " keep a backup file
 set backupdir=/tmp
 set directory=/tmp
@@ -174,6 +175,10 @@ map <c-h> <c-w>h
 nnoremap ' `
 nnoremap ` '
 
+" reflow paragraph with Q in normal and visual mode
+nnoremap Q gqap
+vnoremap Q gq
+
 " Make Ctrl+J join lines in insert mode
 inoremap <C-j> <C-o>J
 
@@ -186,6 +191,12 @@ function! s:ToggleScratch()
     Sscratch
   endif
 endfunction
+
+function! StripWhitespace ()
+      exec ':%s/ \+$//gc'
+endfunction
+map ,s :call StripWhitespace ()<CR>
+
 
 map <silent> <leader>s :call <SID>ToggleScratch()<CR>
 map <leader>f :FuzzyFinderFile<CR>
@@ -264,6 +275,8 @@ autocmd BufEnter *.pl map <leader>w :w<CR>:!perl -wc %<CR>
 " Pone al vim bajo el directorio del archivo actual
 autocmd BufEnter * set path=**
 autocmd BufEnter *.xml set equalprg=xmllint\ --format\ --recover\ -
+
+au Filetype gitcommit set tw=68 spell
 
 runtime! ftdetect/*.vim
 
