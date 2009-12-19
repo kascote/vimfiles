@@ -1,3 +1,4 @@
 GetLatest
 .VimballRecord
 tmp/*
+plugin/vim-color-test.tmp
