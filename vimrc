@@ -1,3 +1,6 @@
+"---[ Profiler ]-----------------------------------------------------------
+"let g:startup_profile_csv = "/tmp/profile_vim.csv"
+"runtime macros/startup_profile.vim
 "---[ General ]-----------------------------------------------------------
 let $LANG = 'en'
 set autowrite                       " Automatically save before commands like :next and :make
@@ -204,9 +207,6 @@ map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>z :BufExplorer<CR>
 map <leader>t <c-]><CR>
-"map <Leader>m :Rmodel
-"map <Leader>r :Rcontroller
-"map <Leader>v :Rview
 map <c-z> <space>
 "Fast reloading of the .vimrc
 map <leader>s :source ~/.vimrc<cr>

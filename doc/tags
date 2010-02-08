@@ -718,6 +718,7 @@ g:spinner_initial_search_type	spinner.txt	/*g:spinner_initial_search_type*
 g:spinner_nextitem_key	spinner.txt	/*g:spinner_nextitem_key*
 g:spinner_previousitem_key	spinner.txt	/*g:spinner_previousitem_key*
 g:spinner_switchmode_key	spinner.txt	/*g:spinner_switchmode_key*
+g:startup_profile_csv	startup_profile.txt	/*g:startup_profile_csv*
 g:vimball_home	pi_vimball.txt	/*g:vimball_home*
 g:vimball_mkdir	pi_vimball.txt	/*g:vimball_mkdir*
 g:vimball_path_escape	pi_vimball.txt	/*g:vimball_path_escape*
@@ -1183,15 +1184,6 @@ rails-tabs	rails.txt	/*rails-tabs*
 rails-template-types	rails.txt	/*rails-template-types*
 rails-vim-integration	rails.txt	/*rails-vim-integration*
 rails.txt	rails.txt	/*rails.txt*
-ruby-debugger	ruby_debugger.txt	/*ruby-debugger*
-ruby-debugger-about	ruby_debugger.txt	/*ruby-debugger-about*
-ruby-debugger-bugs	ruby_debugger.txt	/*ruby-debugger-bugs*
-ruby-debugger-details	ruby_debugger.txt	/*ruby-debugger-details*
-ruby-debugger-installation	ruby_debugger.txt	/*ruby-debugger-installation*
-ruby-debugger-introduction	ruby_debugger.txt	/*ruby-debugger-introduction*
-ruby-debugger-plugin-author	ruby_debugger.txt	/*ruby-debugger-plugin-author*
-ruby-debugger-quickstart	ruby_debugger.txt	/*ruby-debugger-quickstart*
-ruby_debugger.txt	ruby_debugger.txt	/*ruby_debugger.txt*
 screen	screen.txt	/*screen*
 screen-externalshell	screen.txt	/*screen-externalshell*
 screen-gotchas	screen.txt	/*screen-gotchas*
@@ -1261,6 +1253,7 @@ spinner-window	spinner.txt	/*spinner-window*
 spinner.txt	spinner.txt	/*spinner.txt*
 sqlite	dbext.txt	/*sqlite*
 sqlsrv	dbext.txt	/*sqlsrv*
+startup_profile.txt	startup_profile.txt	/*startup_profile.txt*
 supertab	supertab.txt	/*supertab*
 supertab-completioncontexts	supertab.txt	/*supertab-completioncontexts*
 supertab-contextdefault	supertab.txt	/*supertab-contextdefault*
