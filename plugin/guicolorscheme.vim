@@ -211,7 +211,17 @@ function! s:HL(group, fg, bg, attr) "{{{
     endif
 endfunction "}}}
 
-"}}}
+function! s:GenerateColor(group, fg, bg, attr) "{{{
+    if a:fg != ""
+        call append(0, "hi " . a:group . " guifg=#" . a:fg . " ctermfg=" . s:cindex(a:fg))
+    endif
+    if a:bg != ""
+        call append(0, "hi " . a:group . " guibg=#" . a:bg . " ctermbg=" . s:cindex(a:bg))
+    endif
+    if a:attr != ""
+        call append(0, "hi " . a:group . " gui=" . a:attr . " cterm=" . a:attr)
+    endif
+endfunction"}}}
 
 " Completion Helpers {{{
 function! s:Colorscheme_Complete(A,L,P)
@@ -249,6 +259,7 @@ function! s:GuiColorScheme(fname)
         return 0
     endif
 
+    execute ( 'vert new ') . 'new_color_scheme'
     for line in readfile(l:file)
         if line =~ '\s*hi'
             let l:name = ""
@@ -305,7 +316,8 @@ function! s:GuiColorScheme(fname)
                 endif
             endif
 
-            call s:HL(l:name, l:fg, l:bg, l:attr)
+            "call s:HL(l:name, l:fg, l:bg, l:attr)
+            call s:GenerateColor(l:name, l:fg, l:bg, l:attr)
         endif
     endfor
 endfunction
