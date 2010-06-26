@@ -241,14 +241,14 @@ hi MoreMsg          ctermfg=29                                      cterm=none
 hi ModeMsg          guifg=#76d5f8           guibg=NONE              gui=none
 hi ModeMsg          ctermfg=117             ctermbg=NONE            cterm=none
 " the '~' and '@' and showbreak, '>' double wide char doesn't fit on line
-hi NonText          guifg=#404040                                   gui=none
-hi NonText          ctermfg=235                                     cterm=none
+hi NonText          guifg=#7d2f2f                                   gui=none
+hi NonText          ctermfg=30                                      cterm=none
 " the hit-enter prompt (show more output) and yes/no questions
 hi Question         guifg=fg                                        gui=none
 hi Question         ctermfg=fg                                      cterm=none
 " meta and special keys used with map, unprintable characters
 hi SpecialKey       guifg=#405060
-hi SpecialKey       ctermfg=237
+hi SpecialKey       ctermfg=30
 " titles for output from :set all, :autocmd, etc
 hi Title            guifg=#62bdde                                   gui=none
 hi Title            ctermfg=74                                      cterm=none

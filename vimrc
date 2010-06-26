@@ -7,8 +7,9 @@ let $LANG = 'en'
 set autowrite                       " Automatically save before commands like :next and :make
 set encoding=utf8
 setglobal fenc=utf8
-set history=50                      " keep 50 lines of command line history
+set history=200                     " keep 50 lines of command line history
 set ignorecase                      " Do case insensitive search matching
+set smartcase
 set nocompatible                    " Usar modo Vim
 set showcmd                         " Show (partial) command in status line.
 let mapleader = ','                 " remap leader
@@ -19,6 +20,7 @@ filetype plugin indent on           " Enable file type detection.
 "set grepformat=%f:%l:%m
 set tags=tags,vim_tags;~/           " Look for the file in the current directory, then south until you reach home.
 set timeoutlen=500                  " Quick timeouts on key combinations.
+set hidden                          " permit switch buffers without save it before
 "}}}
 "---[ Theme / Colors ]---------------------------------------------------- {{{
 syntax on
@@ -92,7 +94,7 @@ set so=10                   " Keep 10 lines (top/bottom) for scope
 set novisualbell            " don't blink
 set noerrorbells            " no noises
 set t_vb=                   " Evita los beeps y flashear la pantalla
-set statusline=%<%F%=\ [%M%n%R%H%W]\ %{&ff}\ %y\ %-19(%3l,%02c%03V%)[%o,%O]\ 0x%02B'%03b'  "Formato de la linea de status
+set statusline=%#warningmsg#%{SyntasticStatuslineFlag()}%*%<%F%=\ [%M%n%R%H%W]\ %{&ff}\ %y\ %-19(%3l,%02c%03V%)[%o,%O]\ 0x%02B'%03b'  "Formato de la linea de status
 set laststatus=2            " always show the status line
 "}}}
 "---[ Text Formatting/Layout ]-------------------------------------------- {{{
@@ -191,7 +193,7 @@ inoremap <C-j> <C-o>J
 map <silent> <leader>s :call <SID>ToggleScratch()<CR>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>z :BufExplorer<CR>
-map <leader>t <c-]><CR>
+"map <leader>t <c-]><CR>
 "Fast reloading of the .vimrc
 map <leader>s :source ~/.vimrc<cr>
 "Fast editing of .vimrc
@@ -217,6 +219,8 @@ map <leader>rm :Rmodel<cr>
 map <leader>rh :Rhelper<cr>
 "adjust indentation on the file
 map <leader>ii :call <SID>Preserve("normal gg=G")
+" give the syntax highlight id for the word under the cursor
+map <leader>00 :echo synIDattr(synID(line('.'), col('.'), 0), 'name')<cr>
 
 
 " fix meta-keys which generate <Esc>a .. <Esc>z
