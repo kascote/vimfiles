@@ -26,14 +26,14 @@ set hidden                          " permit switch buffers without save it befo
 syntax on
 if has("gui_running")
   set background=dark
-  color lucius "peaksea vividchalk_nel
+  color lucius_nel "peaksea vividchalk_nel
   if has('unix')
     set guifont=monaco\ 9
   else
     set guifont=Consolas:h10
   endif
 else
-  color lucius "peaksea vividchalk_nel
+  color lucius_nel "peaksea vividchalk_nel
 endif
 
 "}}}
