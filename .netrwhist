@@ -1,3 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =2
 let g:netrw_dirhist_1='/vault/Projects/rails/thrive.git/vendor/plugins/cms/lib'
+let g:netrw_dirhist_2='/Users/nelson/Library/Application Support/Textual/Styles/Simplified Dark'

@@ -28,9 +28,9 @@ if has("gui_running")
   set background=dark
   color lucius "peaksea vividchalk_nel
   if has('unix')
-    set guifont=monaco\ 9
+    set guifont=Inconsolata:h14
   else
-    set guifont=Consolas:h10
+    set guifont=Inconsolata:h14
   endif
 else
   color lucius "peaksea vividchalk_nel
@@ -50,6 +50,8 @@ set noswapfile
 set lsp=0                   " space it out a little more (easier to read)
 set wildmenu                " turn on wild menu
 "set wildmode=list:longest
+"Ignore these files when completing names and in Explorer
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif
 set ruler                   " Always show current positions along the bottom
 set cmdheight=2             " the command bar is 2 high
 set number                  " turn on line numbers
@@ -68,12 +70,21 @@ set t_Co=256                " Configura la consola a 256 colores
 set title                   " set terminal title
 "set virtualedit=all         " permite mover el cursor por todos lados en modo comando
 "set cursorline              " colorea la linea actual del cursor
-set guioptions+=m           " menu bar
-set guioptions+=g           " grey menu disabled menu items
-set guioptions+=t           " tearoff menus
-set guioptions-=T           " disable toolbar
-set guioptions+=a           " Vim selection to OS clipboard, modeless
-set guioptions+=c           " console dialogs
+if has('gui_running')
+  set guioptions+=m           " menu bar
+  set guioptions+=g           " grey menu disabled menu items
+  set guioptions+=t           " tearoff menus
+  set guioptions-=T           " disable toolbar
+  set guioptions+=a           " Vim selection to OS clipboard, modeless
+  set guioptions+=c           " console dialogs
+  set guioptions-=l           " left scrollbar
+  set guioptions-=L           " left scrollbar
+  set guioptions-=r           " right scrollbar
+  set guioptions-=b           " bottom scrollbar
+  if has('gui_macvim')
+    set fuoptions=maxvert,maxhorz
+  endif
+endif
 "set guicursor=
 "	\n:block-nCursor/lCursor-blinkwait700-blinkoff250-blinkon400,
 "	\c:block-Error/lCursor,
@@ -135,7 +146,7 @@ let g:winManagerWidth=35    " How wide should it be( pixels)
 let g:winManagerWindowLayout = 'FileExplorer,TagsExplorer|BufExplorer' " What windows should it
 "}}}
 "---[ CTags ]------------------------------------------------------------- {{{
-let Tlist_Ctags_Cmd = 'ctags'           " Location of ctags
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'           " Location of ctags
 let Tlist_Sort_Type = "name"            " order by
 let Tlist_Use_Right_Window = 1          " split to the right side of the screen
 let Tlist_Compart_Format = 1            " show small meny
@@ -170,10 +181,17 @@ imap <silent><End>   <C-r>=SmartEnd("i")<CR>
 vmap <silent><Home>  <Esc>:cal SmartHome("v")<CR>
 vmap <silent><End>   <Esc>:cal SmartEnd("v")<CR>
 "-------------
-imap <M-6> <C-X>/
-imap <M-7> <C-X>+
-imap <M-8> <C-X>-
-imap <M-9> <C-X>=
+"if has('mac')
+  imap <D-6> <C-X>/
+  imap <D-7> <C-X>+
+  imap <D-8> <C-X>-
+  imap <D-9> <C-X>=
+"elseif has('unix')
+"  imap <M-6> <C-X>/
+"  imap <M-7> <C-X>+
+"  imap <M-8> <C-X>-
+"  imap <M-9> <C-X>=
+"endif
 "------------- mueve y maximiza entre ventanas
 map <c-j> <c-w>j
 map <c-k> <c-w>k
@@ -187,13 +205,18 @@ nnoremap ` '
 nnoremap Q gqap
 vnoremap Q gq
 
+" select the last changed/pasted text
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 " Make Ctrl+J join lines in insert mode
 inoremap <C-j> <C-o>J
 
 map <silent> <leader>s :call <SID>ToggleScratch()<CR>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+map <leader>D :NERDTreeFind<CR>
 map <leader>z :BufExplorer<CR>
 "map <leader>t <c-]><CR>
+map <leader>q :TlistToggle<cr>
 "Fast reloading of the .vimrc
 map <leader>s :source ~/.vimrc<cr>
 "Fast editing of .vimrc
@@ -221,6 +244,10 @@ map <leader>rh :Rhelper<cr>
 map <leader>ii :call <SID>Preserve("normal gg=G")
 " give the syntax highlight id for the word under the cursor
 map <leader>00 :echo synIDattr(synID(line('.'), col('.'), 0), 'name')<cr>
+" Make shift-insert work like in Xterm
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
+nmap <C-X> :b#<cr>
 
 
 " fix meta-keys which generate <Esc>a .. <Esc>z
@@ -239,14 +266,14 @@ map <leader>00 :echo synIDattr(synID(line('.'), col('.'), 0), 'name')<cr>
 "  let c = nr2char(1+char2nr(c))
 "endw
 
-map 6 <M-6>
-map! 6 <M-6>
-map 7 <M-7>
-map! 7 <M-7>
-map 8 <M-8>
-map! 8 <M-8>
-map 9 <M-9>
-map! 9 <M-9>
+"map 6 <M-6>
+"map! 6 <M-6>
+"map 7 <M-7>
+"map! 7 <M-7>
+"map 8 <M-8>
+"map! 8 <M-8>
+"map 9 <M-9>
+"map! 9 <M-9>
 
 "Smart mappings on the command line
 cno $h e ~/
